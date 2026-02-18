@@ -3,175 +3,443 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selamat Ulang Tahun!</title>
+    <title>🌙 Selamat... ehh Puasa? 🌙</title>
     <style>
         body {
             margin: 0;
-            padding: 0;
             min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
             font-family: 'Arial', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            text-align: center;
+            overflow-x: hidden;
         }
 
         .card {
             background: rgba(255, 255, 255, 0.95);
             padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             max-width: 600px;
             margin: 20px;
-            animation: fadeIn 1.5s ease-in;
+            position: relative;
+            border: 3px solid gold;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .moon {
+            font-size: 80px;
+            position: absolute;
+            top: -40px;
+            right: -20px;
+            transform: rotate(20deg);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(20deg); }
+            50% { transform: translateY(-20px) rotate(25deg); }
         }
 
         h1 {
-            color: #764ba2;
-            font-size: 3em;
-            margin-bottom: 20px;
+            color: #1e3c72;
+            font-size: 2.5em;
+            margin-bottom: 30px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
-        .birthday-text {
-            font-size: 1.5em;
+        .ramadhan-text {
+            font-size: 1.3em;
             color: #333;
-            line-height: 1.6;
-            margin: 20px 0;
+            line-height: 1.8;
         }
 
-        .highlight {
-            color: #667eea;
+        .food-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .food-item {
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+            padding: 10px;
+            border-radius: 15px;
+            background: #fff0e0;
+            min-width: 100px;
+        }
+
+        .food-item:hover {
+            transform: scale(1.1);
+            background: #ffe4cc;
+        }
+
+        .food-emoji {
+            font-size: 50px;
+            display: block;
+        }
+
+        .food-name {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .hunger-meter {
+            background: #ddd;
+            height: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            overflow: hidden;
+            border: 2px solid #1e3c72;
+        }
+
+        #hungerFill {
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, #ff9933, #ff6b6b);
+            transition: width 0.5s;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            color: white;
             font-weight: bold;
-            font-size: 2em;
+            font-size: 14px;
         }
 
-        .baloons {
-            font-size: 4em;
+        .timer {
+            font-size: 48px;
+            color: #1e3c72;
+            font-weight: bold;
             margin: 20px 0;
-            animation: bounce 1s infinite;
+            font-family: 'Courier New', monospace;
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .prank-btn {
+            background: linear-gradient(135deg, #ff6b6b, #ff4757);
             color: white;
             border: none;
             padding: 15px 40px;
             font-size: 1.2em;
             border-radius: 50px;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            margin-top: 20px;
+            transition: all 0.3s;
+            margin: 10px;
+            font-weight: bold;
         }
 
-        .btn:hover {
+        .prank-btn:hover {
             transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 5px 20px rgba(255, 71, 87, 0.4);
         }
 
-        .confetti {
+        .prank-btn.evil {
+            background: linear-gradient(135deg, #333, #000);
+        }
+
+        #prankMessage {
+            background: #ffeaa7;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            font-size: 18px;
+            display: none;
+            border-left: 5px solid #ff6b6b;
+        }
+
+        .floating-food {
             position: fixed;
-            width: 10px;
-            height: 10px;
-            background: #f00;
+            font-size: 30px;
             pointer-events: none;
-            animation: fall 5s linear forwards;
+            animation: floatUp 3s ease-out forwards;
+            z-index: 1000;
         }
 
-        @keyframes fall {
-            to {
-                transform: translateY(100vh) rotate(720deg);
+        @keyframes floatUp {
+            0% { 
+                transform: translateY(0) rotate(0deg); 
+                opacity: 1;
+            }
+            100% { 
+                transform: translateY(-200px) rotate(360deg); 
+                opacity: 0;
             }
         }
 
-        .wishes {
-            margin-top: 30px;
-            padding: 20px;
-            background: #f5f5f5;
-            border-radius: 10px;
-            display: none;
+        .takjil-alert {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ffd700;
+            color: #000;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            z-index: 1001;
+            animation: slideDown 0.5s;
         }
 
-        .show {
-            display: block;
+        @keyframes slideDown {
+            from { top: -100px; }
+            to { top: 20px; }
         }
     </style>
 </head>
 <body>
+    <div class="moon">🌙</div>
+    
     <div class="card">
-        <div class="baloons">
-            🎈 🎉 🎈
-        </div>
+        <h1>🌙 SELAMAT MENJALANKAN... 🏃‍♂️</h1>
+        <h1 style="font-size: 1.8em; margin-top: -10px;">eh bentar, PUASA ya? 😅</h1>
         
-        <h1>🎂 Selamat Ulang Tahun! 🎂</h1>
-        
-        <div class="birthday-text">
-            <p>Untuk <span class="highlight">[Nama yang Berulang Tahun]</span></p>
-            <p>Semoga hari spesialmu dipenuhi dengan</p>
-            <p>kebahagiaan, cinta, dan kejutan manis! ✨</p>
+        <div class="ramadhan-text">
+            <p>Untuk: <strong style="color: #ff4757;">[Nama Teman]</strong></p>
+            <p>Semoga puasamu lancar sampai maghrib... 🤲</p>
+            <p><small>*walaupun godaannya berat*</small></p>
         </div>
 
-        <button class="btn" onclick="showWishes()">Klik untuk Ucapan Spesial</button>
-        
-        <div id="wishesMessage" class="wishes">
-            <p>❤️ Selamat ulang tahun! ❤️</p>
-            <p>Semoga semua impianmu menjadi kenyataan,</p>
-            <p>sehat selalu, dan dikelilingi orang-orang yang menyayangimu.</p>
-            <p>🎊 🎉 🎊</p>
+        <!-- Food Temptation Section (Jahil) -->
+        <h3>⚠️ COBAAN PUASA HARI INI ⚠️</h3>
+        <div class="food-container">
+            <div class="food-item" onclick="temptFood('fried')">
+                <span class="food-emoji">🍗</span>
+                <span class="food-name">Ayam Goreng</span>
+            </div>
+            <div class="food-item" onclick="temptFood('ice')">
+                <span class="food-emoji">🥤</span>
+                <span class="food-name">Es Teh Manis</span>
+            </div>
+            <div class="food-item" onclick="temptFood('cake')">
+                <span class="food-emoji">🍰</span>
+                <span class="food-name">Kue Lapis</span>
+            </div>
+            <div class="food-item" onclick="temptFood('noodle')">
+                <span class="food-emoji">🍜</span>
+                <span class="food-name">Mie Ayam</span>
+            </div>
+            <div class="food-item" onclick="temptFood('coffee')">
+                <span class="food-emoji">☕</span>
+                <span class="food-name">Kopi Susu</span>
+            </div>
         </div>
 
-        <button class="btn" onclick="createConfetti()" style="margin-left: 10px;">🎊 Tembakkan Confetti! 🎊</button>
+        <!-- Hunger Meter -->
+        <div style="margin-top: 20px;">
+            <p>📊 Tingkat Kelaparan: <span id="hungerPercent">100%</span></p>
+            <div class="hunger-meter">
+                <div id="hungerFill">100%</div>
+            </div>
+        </div>
+
+        <!-- Countdown to Maghrib (Prank) -->
+        <p>⏰ Menuju Maghrib:</p>
+        <div class="timer" id="countdown">05:00:00</div>
+
+        <!-- Prank Buttons -->
+        <button class="prank-btn" onclick="lihatTakjil()">
+            👀 Lihat Takjil Terdekat
+        </button>
+        
+        <button class="prank-btn evil" onclick="activateJahilMode()">
+            🎭 Mode Jahil Aktif
+        </button>
+
+        <!-- Message Area -->
+        <div id="prankMessage"></div>
+
+        <p style="color: #999; margin-top: 30px; font-size: 12px;">
+            *Disclaimer: Website ini hanya bercanda, tetap semangat puasanya! 😉
+        </p>
     </div>
 
     <script>
-        function showWishes() {
-            const wishes = document.getElementById('wishesMessage');
-            wishes.classList.toggle('show');
+        let hungerLevel = 100;
+        let jahilMode = false;
+        let temptCount = 0;
+
+        // Countdown Timer (Prank: mundur lambat)
+        function updateCountdown() {
+            const now = new Date();
+            const maghrib = new Date();
+            maghrib.setHours(18, 0, 0); // Asumsi maghrib jam 6
             
-            // Play sound (opsional)
-            // const audio = new Audio('happy-birthday.mp3');
-            // audio.play();
+            let diff = maghrib - now;
+            
+            // Prank: kalau udah lewat maghrib, reset ke 5 jam lagi
+            if (diff < 0) {
+                diff = 5 * 60 * 60 * 1000; // 5 jam
+                showPrankMessage("🔁 Eh? Maghribnya mundur 5 jam lagi! Sabar ya...");
+            }
+            
+            // Prank: Mode jahil bikin countdown mundur lebih lambat
+            if (jahilMode) {
+                diff = diff * 1.5; // Lebih lambat 50%
+            }
+            
+            const hours = Math.floor(diff / (60 * 60 * 1000));
+            const minutes = Math.floor((diff % (60 * 60 * 1000)) / (60 * 1000));
+            const seconds = Math.floor((diff % (60 * 1000)) / 1000);
+            
+            document.getElementById('countdown').innerHTML = 
+                `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         }
 
-        function createConfetti() {
-            for (let i = 0; i < 50; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                
-                // Warna random
-                const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                
-                // Posisi random
-                confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.animationDelay = Math.random() * 2 + 's';
-                confetti.style.width = Math.random() * 10 + 5 + 'px';
-                confetti.style.height = confetti.style.width;
-                
-                document.body.appendChild(confetti);
-                
-                // Hapus confetti setelah animasi selesai
+        setInterval(updateCountdown, 1000);
+
+        // Function untuk godain puasa
+        function temptFood(type) {
+            temptCount++;
+            
+            // Kurangi hunger level
+            hungerLevel = Math.max(0, hungerLevel - 15);
+            document.getElementById('hungerFill').style.width = hungerLevel + '%';
+            document.getElementById('hungerFill').innerHTML = hungerLevel + '%';
+            document.getElementById('hungerPercent').innerHTML = hungerLevel + '%';
+            
+            // Munculin makanan terbang
+            const emoji = event.currentTarget.querySelector('.food-emoji').innerHTML;
+            for (let i = 0; i < 5; i++) {
                 setTimeout(() => {
-                    confetti.remove();
-                }, 5000);
+                    createFloatingFood(emoji);
+                }, i * 100);
+            }
+            
+            // Pesan berdasarkan mode
+            if (jahilMode) {
+                const messages = [
+                    "🧋 Kebayang nggak sih es teh manisnya?",
+                    "🍗 Ayam gorengnya kriuk-kriuk...",
+                    "🥤 Dinginnya ngalir di tenggorokan...",
+                    "😈 Lapar kan? Tinggal 5 jam lagi kok!"
+                ];
+                showPrankMessage(messages[Math.floor(Math.random() * messages.length)]);
+            }
+            
+            // Kalau hunger level 0
+            if (hungerLevel <= 0) {
+                showPrankMessage("💀 PUASANYA BATAL! Eh bercanda, semangat terus! 💪");
+                hungerLevel = 100;
+                document.getElementById('hungerFill').style.width = '100%';
+                document.getElementById('hungerFill').innerHTML = '100%';
+            }
+            
+            // Semakin sering diklik, makin parah
+            if (temptCount > 10 && !jahilMode) {
+                showPrankMessage("⚠️ Kebanyakan lihat makanan! Takjilnya pada lari-lari nanti!");
+                createFloatingFood("🏃‍♂️🍗");
             }
         }
 
-        // Tambahkan efek kembang api saat halaman dimuat
-        window.onload = function() {
-            setTimeout(createConfetti, 500);
+        function createFloatingFood(emoji) {
+            const food = document.createElement('div');
+            food.className = 'floating-food';
+            food.innerHTML = emoji;
+            food.style.left = Math.random() * 100 + 'vw';
+            food.style.bottom = '0';
+            document.body.appendChild(food);
+            
+            setTimeout(() => {
+                food.remove();
+            }, 3000);
         }
+
+        function lihatTakjil() {
+            const takjil = document.createElement('div');
+            takjil.className = 'takjil-alert';
+            takjil.innerHTML = '🍢 TAKJIL! 🍢 Kolak, Es Buah, Gorengan... *lari*';
+            document.body.appendChild(takjil);
+            
+            // Bunyi notif (vibrate kalau di HP)
+            if (navigator.vibrate) {
+                navigator.vibrate([200, 100, 200]);
+            }
+            
+            setTimeout(() => {
+                takjil.remove();
+            }, 3000);
+            
+            // Prank: tiba-tiba muncul alert
+            if (jahilMode) {
+                setTimeout(() => {
+                    alert("🗣️ 'BANG, TAKJILNYA DIBORONG ORANG!'");
+                }, 1500);
+            }
+        }
+
+        function activateJahilMode() {
+            jahilMode = true;
+            
+            // Ubah tampilan
+            document.body.style.background = 'linear-gradient(135deg, #2c3e50, #000000)';
+            
+            // Munculin banyak floating food
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const foods = ['🍗', '🍜', '🥤', '🍰', '☕'];
+                    createFloatingFood(foods[Math.floor(Math.random() * foods.length)]);
+                }, i * 200);
+            }
+            
+            // Prank messages
+            const evilMessages = [
+                "😈 MODE JAHIL AKTIF!",
+                "🍗 Sekarang setiap 10 detik bakal muncul makanan...",
+                "💀 Psst... tetangga lagi goreng ayam!",
+                "⏰ Countdown sekarang lebih lambat!",
+                "📱 *notif* 'Yuk buka bersama di tempat favorit'"
+            ];
+            
+            evilMessages.forEach((msg, index) => {
+                setTimeout(() => {
+                    showPrankMessage(msg);
+                }, index * 2000);
+            });
+            
+            // Spam makanan tiap beberapa detik
+            setInterval(() => {
+                if (jahilMode) {
+                    const foods = ['🍗', '🍜', '🥤', '🍰', '☕', '🍛', '🍲'];
+                    createFloatingFood(foods[Math.floor(Math.random() * foods.length)]);
+                    
+                    // Random message
+                    if (Math.random() > 0.7) {
+                        showPrankMessage("😋 Laper? " + Math.floor(Math.random() * 60) + " menit lagi kok!");
+                    }
+                }
+            }, 3000);
+        }
+
+        function showPrankMessage(msg) {
+            const messageDiv = document.getElementById('prankMessage');
+            messageDiv.style.display = 'block';
+            messageDiv.innerHTML = msg;
+            
+            // Auto hide setelah 3 detik
+            setTimeout(() => {
+                if (!jahilMode) {
+                    messageDiv.style.display = 'none';
+                }
+            }, 3000);
+        }
+
+        // Prank: Mouse bergerak sendiri?
+        document.addEventListener('mousemove', function(e) {
+            if (jahilMode && Math.random() > 0.99) { // 1% chance
+                showPrankMessage("👀 Mau ngapain? Lapar ya?");
+            }
+        });
+
+        // Prank: Double click
+        document.addEventListener('dblclick', function() {
+            if (jahilMode) {
+                alert("🍴 DOUBLE CLICK = MAKAN! Eh tapi lagi puasa... 😜");
+            }
+        });
     </script>
 </body>
 </html>
