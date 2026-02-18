@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            max-width: 600px;
+            margin: 20px;
+            animation: fadeIn 1.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            color: #764ba2;
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .birthday-text {
+            font-size: 1.5em;
+            color: #333;
+            line-height: 1.6;
+            margin: 20px 0;
+        }
+
+        .highlight {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 2em;
+        }
+
+        .baloons {
+            font-size: 4em;
+            margin: 20px 0;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #f00;
+            pointer-events: none;
+            animation: fall 5s linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(720deg);
+            }
+        }
+
+        .wishes {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="baloons">
+            🎈 🎉 🎈
+        </div>
+        
+        <h1>🎂 Selamat Ulang Tahun! 🎂</h1>
+        
+        <div class="birthday-text">
+            <p>Untuk <span class="highlight">[Nama yang Berulang Tahun]</span></p>
+            <p>Semoga hari spesialmu dipenuhi dengan</p>
+            <p>kebahagiaan, cinta, dan kejutan manis! ✨</p>
+        </div>
+
+        <button class="btn" onclick="showWishes()">Klik untuk Ucapan Spesial</button>
+        
+        <div id="wishesMessage" class="wishes">
+            <p>❤️ Selamat ulang tahun! ❤️</p>
+            <p>Semoga semua impianmu menjadi kenyataan,</p>
+            <p>sehat selalu, dan dikelilingi orang-orang yang menyayangimu.</p>
+            <p>🎊 🎉 🎊</p>
+        </div>
+
+        <button class="btn" onclick="createConfetti()" style="margin-left: 10px;">🎊 Tembakkan Confetti! 🎊</button>
+    </div>
+
+    <script>
+        function showWishes() {
+            const wishes = document.getElementById('wishesMessage');
+            wishes.classList.toggle('show');
+            
+            // Play sound (opsional)
+            // const audio = new Audio('happy-birthday.mp3');
+            // audio.play();
+        }
+
+        function createConfetti() {
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                
+                // Warna random
+                const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Posisi random
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.animationDelay = Math.random() * 2 + 's';
+                confetti.style.width = Math.random() * 10 + 5 + 'px';
+                confetti.style.height = confetti.style.width;
+                
+                document.body.appendChild(confetti);
+                
+                // Hapus confetti setelah animasi selesai
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+
+        // Tambahkan efek kembang api saat halaman dimuat
+        window.onload = function() {
+            setTimeout(createConfetti, 500);
+        }
+    </script>
+</body>
+</html>
