@@ -62,7 +62,7 @@
             padding: 50px;
             border-radius: 60px 60px 60px 60px;
             box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
-            max-width: 800px;
+            max-width: 700px;
             width: 100%;
             position: relative;
             border: 3px solid #C9A959;
@@ -129,7 +129,7 @@
 
         .profile-section {
             background: linear-gradient(135deg, #F8E3B3, #FFE5B4);
-            padding: 25px;
+            padding: 30px;
             border-radius: 30px;
             margin-bottom: 30px;
             text-align: center;
@@ -146,107 +146,91 @@
             font-size: 1.4em;
         }
 
-        .food-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 15px;
-            margin: 30px 0;
-        }
-
-        .food-card {
-            background: white;
-            border-radius: 25px;
-            padding: 15px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid #FFD966;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .food-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.3);
-            border-color: #C9A959;
-        }
-
-        .food-emoji {
-            font-size: 60px;
-            display: block;
-            margin-bottom: 10px;
-            filter: drop-shadow(0 5px 5px rgba(0,0,0,0.2));
-        }
-
-        .food-name {
-            font-size: 14px;
-            font-weight: bold;
-            color: #1A3B5C;
-            background: #FFF0D4;
-            padding: 5px 10px;
-            border-radius: 20px;
-        }
-
-        .hunger-section {
-            background: #E8F0FE;
-            padding: 20px;
-            border-radius: 30px;
-            margin: 30px 0;
-        }
-
-        .hunger-label {
-            display: flex;
-            justify-content: space-between;
-            color: #1A3B5C;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 35px;
-            background: #ddd;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 3px solid #1A3B5C;
-            position: relative;
-        }
-
-        #hungerFill {
-            height: 100%;
-            width: 100%;
-            background: linear-gradient(90deg, #27AE60, #F39C12, #E74C3C);
-            transition: width 0.5s ease;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            padding-right: 15px;
-            color: white;
-            font-weight: bold;
-            font-size: 16px;
-            text-shadow: 2px 2px 2px rgba(0,0,0,0.3);
-        }
-
         .timer-container {
             text-align: center;
             background: #1A3B5C;
-            padding: 20px;
+            padding: 25px;
             border-radius: 30px;
             margin: 30px 0;
         }
 
         .timer-label {
             color: #FFD966;
-            font-size: 1.2em;
-            margin-bottom: 10px;
+            font-size: 1.3em;
+            margin-bottom: 15px;
         }
 
         #countdown {
-            font-size: 64px;
+            font-size: 72px;
             color: white;
             font-weight: bold;
             font-family: 'Courier New', monospace;
             text-shadow: 0 0 20px #FFD966;
             letter-spacing: 5px;
+        }
+
+        .custom-photo-section {
+            background: #FFF0D4;
+            padding: 30px;
+            border-radius: 30px;
+            margin: 30px 0;
+            text-align: center;
+            border: 2px dashed #C9A959;
+        }
+
+        .section-title {
+            color: #1A3B5C;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .photo-input {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2em;
+            border: 3px solid #C9A959;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            font-family: inherit;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .photo-input:focus {
+            border-color: #B8860B;
+            box-shadow: 0 0 20px rgba(201, 169, 89, 0.5);
+        }
+
+        .photo-examples {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin: 25px 0;
+        }
+
+        .example-btn {
+            background: white;
+            border: 2px solid #C9A959;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-size: 1.3em;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .example-btn:hover {
+            background: #C9A959;
+            color: white;
+            transform: scale(1.1);
+            border-color: white;
         }
 
         .button-container {
@@ -306,145 +290,35 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        /* Modal Foto Makanan */
-        .food-modal {
+        .floating-photo {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            opacity: 0;
+            font-size: 60px;
             pointer-events: none;
-            transition: opacity 0.5s;
-        }
-
-        .food-modal.show {
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 40px;
-            border-radius: 50px;
-            max-width: 800px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-            text-align: center;
-            position: relative;
-            animation: zoomIn 0.5s;
-        }
-
-        @keyframes zoomIn {
-            from {
-                transform: scale(0.5);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 40px;
-            cursor: pointer;
-            color: #C17817;
-            font-weight: bold;
-        }
-
-        .close-modal:hover {
-            color: #E74C3C;
-        }
-
-        .food-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-
-        .gallery-item {
-            background: #F8F0E5;
-            padding: 20px;
-            border-radius: 30px;
-            font-size: 80px;
-            border: 3px solid #FFD966;
-            transition: all 0.3s;
-            animation: munculBergantian 0.5s ease-out forwards;
-            opacity: 0;
-        }
-
-        .gallery-item:nth-child(1) { animation-delay: 0.1s; }
-        .gallery-item:nth-child(2) { animation-delay: 0.2s; }
-        .gallery-item:nth-child(3) { animation-delay: 0.3s; }
-        .gallery-item:nth-child(4) { animation-delay: 0.4s; }
-        .gallery-item:nth-child(5) { animation-delay: 0.5s; }
-        .gallery-item:nth-child(6) { animation-delay: 0.6s; }
-
-        @keyframes munculBergantian {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .gallery-item span {
-            display: block;
-            font-size: 20px;
-            color: #1A3B5C;
-            margin-top: 15px;
-            font-weight: bold;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.1) rotate(5deg);
-            border-color: #C17817;
-        }
-
-        .modal-footer {
-            margin-top: 30px;
-            font-size: 1.3em;
-            color: #C17817;
-            font-weight: bold;
-            background: #FFF0D4;
-            padding: 20px;
-            border-radius: 30px;
-        }
-
-        .floating-food {
-            position: fixed;
-            font-size: 40px;
-            pointer-events: none;
-            animation: melayangAtas 4s ease-out forwards;
+            animation: terbangMelayang 5s ease-out forwards;
             z-index: 999;
-            filter: drop-shadow(0 5px 15px gold);
+            filter: drop-shadow(0 10px 20px gold);
+            text-shadow: 0 0 20px rgba(255,215,0,0.5);
         }
 
-        @keyframes melayangAtas {
+        @keyframes terbangMelayang {
             0% {
-                transform: translateY(0) rotate(0deg) scale(0.5);
+                transform: translateY(100vh) rotate(0deg) scale(0.5);
                 opacity: 1;
+            }
+            25% {
+                transform: translateY(75vh) rotate(90deg) scale(1.2);
+                opacity: 0.9;
             }
             50% {
-                transform: translateY(-150px) rotate(180deg) scale(1.2);
+                transform: translateY(50vh) rotate(180deg) scale(1.5);
                 opacity: 0.8;
             }
+            75% {
+                transform: translateY(25vh) rotate(270deg) scale(1.2);
+                opacity: 0.7;
+            }
             100% {
-                transform: translateY(-300px) rotate(360deg) scale(0.5);
+                transform: translateY(-20vh) rotate(360deg) scale(0.5);
                 opacity: 0;
             }
         }
@@ -454,6 +328,13 @@
             color: #666;
             margin-top: 30px;
             font-size: 14px;
+        }
+
+        .photo-counter {
+            font-size: 1.2em;
+            color: #C17817;
+            margin-top: 15px;
+            font-weight: bold;
         }
 
         @media (max-width: 768px) {
@@ -466,7 +347,7 @@
             }
             
             #countdown {
-                font-size: 40px;
+                font-size: 48px;
             }
             
             .button-container {
@@ -477,6 +358,10 @@
                 font-size: 80px;
                 top: -30px;
                 right: -20px;
+            }
+            
+            .floating-photo {
+                font-size: 40px;
             }
         }
     </style>
@@ -498,46 +383,46 @@
             <p>🤲 <em>"Jangan lupa sahur, meski hanya seteguk air"</em></p>
         </div>
 
-        <!-- Food Temptation Section -->
-        <h3 style="color: #1A3B5C; text-align: center;">🍽️ Makanan Penggoda Hari Ini</h3>
-        <div class="food-grid">
-            <div class="food-card" onclick="temptFood('🍗')">
-                <span class="food-emoji">🍗</span>
-                <span class="food-name">Ayam Goreng Kriuk</span>
-            </div>
-            <div class="food-card" onclick="temptFood('🥤')">
-                <span class="food-emoji">🥤</span>
-                <span class="food-name">Es Teh Manis</span>
-            </div>
-            <div class="food-card" onclick="temptFood('🍰')">
-                <span class="food-emoji">🍰</span>
-                <span class="food-name">Cheesecake</span>
-            </div>
-            <div class="food-card" onclick="temptFood('🍜')">
-                <span class="food-emoji">🍜</span>
-                <span class="food-name">Mie Ayam Bakso</span>
-            </div>
-            <div class="food-card" onclick="temptFood('☕')">
-                <span class="food-emoji">☕</span>
-                <span class="food-name">Kopi Susu Kekinian</span>
-            </div>
-        </div>
-
-        <!-- Hunger Meter -->
-        <div class="hunger-section">
-            <div class="hunger-label">
-                <span>📊 Tingkat Kelaparan</span>
-                <span id="hungerPercent">100%</span>
-            </div>
-            <div class="progress-bar">
-                <div id="hungerFill">100%</div>
-            </div>
-        </div>
-
         <!-- Countdown -->
         <div class="timer-container">
             <div class="timer-label">⏰ Menuju Waktu Berbuka</div>
             <div id="countdown">05:00:00</div>
+        </div>
+
+        <!-- Custom Photo Section -->
+        <div class="custom-photo-section">
+            <div class="section-title">
+                <span>📸</span> KIRIM UCAPAN BALIK FOTO <span>📸</span>
+            </div>
+            
+            <input type="text" id="photoInput" class="photo-input" 
+                placeholder="Masukkan foto favoritmu (contoh: 🍗, 🌮, 🍕, 🎂, dll)" 
+                value="🍗🍜🥘">
+            
+            <div class="photo-examples">
+                <div class="example-btn" onclick="setPhotoExample('🍗')">
+                    <span>🍗</span> Ayam
+                </div>
+                <div class="example-btn" onclick="setPhotoExample('🍜')">
+                    <span>🍜</span> Mie
+                </div>
+                <div class="example-btn" onclick="setPhotoExample('🍕')">
+                    <span>🍕</span> Pizza
+                </div>
+                <div class="example-btn" onclick="setPhotoExample('🍣')">
+                    <span>🍣</span> Sushi
+                </div>
+                <div class="example-btn" onclick="setPhotoExample('🥘')">
+                    <span>🥘</span> Paella
+                </div>
+                <div class="example-btn" onclick="setPhotoExample('🍨')">
+                    <span>🍨</span> Ice Cream
+                </div>
+            </div>
+
+            <div class="photo-counter" id="photoCounter">
+                🖼️ Siap kirim: <span id="photoPreview">🍗🍜🥘</span>
+            </div>
         </div>
 
         <!-- Buttons -->
@@ -546,8 +431,8 @@
                 <span>🍢</span> Lihat Takjil Terdekat
             </button>
             
-            <button class="btn btn-ucapan" onclick="openFoodGallery()">
-                <span>📸</span> Kasih Ucapan Balik
+            <button class="btn btn-ucapan" onclick="kirimUcapanBalik()">
+                <span>📤</span> Kirim Ucapan Balik
             </button>
         </div>
 
@@ -559,51 +444,7 @@
         </div>
     </div>
 
-    <!-- Modal Foto Makanan -->
-    <div id="foodModal" class="food-modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeFoodGallery()">&times;</span>
-            <h2 style="color: #1A3B5C; font-size: 2.5em;">🍽️ UCAPAN BALIK UNTUKMU</h2>
-            <p style="color: #C17817; font-size: 1.3em;">Semoga makin laper bacanya! 😜</p>
-            
-            <div class="food-gallery">
-                <div class="gallery-item">
-                    🍗<span>Ayam Goreng</span>
-                </div>
-                <div class="gallery-item">
-                    🍜<span>Mie Ayam</span>
-                </div>
-                <div class="gallery-item">
-                    🥘<span>Nasi Goreng</span>
-                </div>
-                <div class="gallery-item">
-                    🍛<span>Rendang</span>
-                </div>
-                <div class="gallery-item">
-                    🥤<span>Es Campur</span>
-                </div>
-                <div class="gallery-item">
-                    🍨<span>Es Krim</span>
-                </div>
-                <div class="gallery-item">
-                    🍢<span>Sate</span>
-                </div>
-                <div class="gallery-item">
-                    🥟<span>Dimsum</span>
-                </div>
-            </div>
-
-            <div class="modal-footer">
-                ✨ SELAMAT BERBUKA PUASA ✨<br>
-                <small style="font-size: 16px;">(semoga kuat nahan laper sampe maghrib 😆)</small>
-            </div>
-        </div>
-    </div>
-
     <script>
-        let hungerLevel = 100;
-        let temptCount = 0;
-
         // Countdown Timer
         function updateCountdown() {
             const now = new Date();
@@ -627,56 +468,113 @@
 
         setInterval(updateCountdown, 1000);
 
-        function temptFood(emoji) {
-            temptCount++;
+        // Update photo preview saat input berubah
+        document.getElementById('photoInput').addEventListener('input', function(e) {
+            document.getElementById('photoPreview').innerHTML = e.target.value || '😋';
+        });
+
+        // Set contoh foto
+        function setPhotoExample(emoji) {
+            const input = document.getElementById('photoInput');
+            const currentValue = input.value;
             
-            hungerLevel = Math.max(0, hungerLevel - 12);
-            updateHungerDisplay();
-            
-            // Munculin makanan terbang
-            for (let i = 0; i < 3; i++) {
-                setTimeout(() => {
-                    createFloatingFood(emoji);
-                }, i * 150);
+            // Tambah emoji ke input (bisa multiple)
+            if (currentValue.includes(emoji)) {
+                // Kalau sudah ada, hapus
+                input.value = currentValue.replace(emoji, '');
+            } else {
+                // Kalau belum ada, tambah
+                input.value = currentValue + emoji;
             }
             
-            const messages = [
-                "😋 Hmm... baunya sampai sini!",
-                "💭 Kebayang gak sih rasanya?",
-                "⏰ Sabar ya, masih X jam lagi!",
-                "🌙 Puasa itu menahan diri, bukan menahan lihat makanan!"
-            ];
-            showPrankMessage(messages[Math.floor(Math.random() * messages.length)]);
-            
-            if (hungerLevel <= 0) {
-                showPrankMessage("💪 PUASANYA BATAL! ... Eeh bercanda! Semangat terus! 🤲");
-                hungerLevel = 100;
-                updateHungerDisplay();
-            }
-            
-            if (temptCount > 15) {
-                showPrankMessage("⚠️ Awas! Takjilnya pada kabur!");
-                createFloatingFood("🏃‍♂️🍗");
-            }
+            document.getElementById('photoPreview').innerHTML = input.value || '😋';
         }
 
-        function updateHungerDisplay() {
-            document.getElementById('hungerFill').style.width = hungerLevel + '%';
-            document.getElementById('hungerFill').innerHTML = hungerLevel + '%';
-            document.getElementById('hungerPercent').innerHTML = hungerLevel + '%';
-        }
-
-        function createFloatingFood(emoji) {
-            const food = document.createElement('div');
-            food.className = 'floating-food';
-            food.innerHTML = emoji;
-            food.style.left = Math.random() * 100 + '%';
-            food.style.bottom = '20px';
-            document.body.appendChild(food);
+        // Fungsi utama kirim ucapan balik dengan foto custom
+        function kirimUcapanBalik() {
+            const photoInput = document.getElementById('photoInput').value.trim();
             
+            if (!photoInput) {
+                showPrankMessage("❌ Masukkan dulu foto yang mau dikirim!");
+                return;
+            }
+
+            // Split foto menjadi array (setiap karakter emoji)
+            const photos = photoInput.match(/([\uD800-\uDBFF][\uDC00-\uDFFF]|.)/g) || [];
+            
+            if (photos.length === 0) {
+                showPrankMessage("❌ Foto tidak valid! Masukkan emoji ya!");
+                return;
+            }
+
+            showPrankMessage(`📸 Mengirim ${photos.length} foto ucapan balik...`);
+
+            // Kirim foto melayang sesuai jumlah
+            let counter = 0;
+            
+            // Loop untuk setiap foto
+            photos.forEach((photo, index) => {
+                // Kirim 3-5 kali setiap foto untuk efek meriah
+                const repeatCount = Math.floor(Math.random() * 3) + 3;
+                
+                for (let i = 0; i < repeatCount; i++) {
+                    setTimeout(() => {
+                        createFloatingPhoto(photo);
+                        counter++;
+                        
+                        // Update counter setiap 5 foto
+                        if (counter % 5 === 0) {
+                            showPrankMessage(`📸 Sudah terkirim ${counter} foto ucapan!`);
+                        }
+                        
+                        // Efek getar di HP
+                        if (navigator.vibrate && counter % 3 === 0) {
+                            navigator.vibrate(50);
+                        }
+                    }, (index * 300) + (i * 200)); // Delay antar foto
+                }
+            });
+
+            // Pesan sukses setelah semua terkirim
             setTimeout(() => {
-                food.remove();
-            }, 4000);
+                const totalFoto = photos.length * 4; // Rata-rata repeat count
+                showPrankMessage(`✅ Berhasil! ${totalFoto} foto ucapan melayang untukmu! ✨`);
+                
+                // Bonus: efek spesial kalau fotonya banyak
+                if (photos.length > 5) {
+                    setTimeout(() => {
+                        showPrankMessage("🎉 WAOW! FOTO BERLIMBAH! SELAMAT BERBUKA! 🎉");
+                    }, 1500);
+                }
+            }, photos.length * 500 + 1000);
+        }
+
+        // Fungsi membuat foto melayang
+        function createFloatingPhoto(photo) {
+            const floatingPhoto = document.createElement('div');
+            floatingPhoto.className = 'floating-photo';
+            floatingPhoto.innerHTML = photo;
+            
+            // Posisi random horizontal
+            floatingPhoto.style.left = Math.random() * 90 + '%';
+            
+            // Ukuran random
+            const size = Math.floor(Math.random() * 40) + 40; // 40-80px
+            floatingPhoto.style.fontSize = size + 'px';
+            
+            // Delay random
+            floatingPhoto.style.animationDelay = Math.random() * 0.5 + 's';
+            
+            // Kecepatan random (sedikit variasi)
+            const duration = Math.floor(Math.random() * 3) + 4; // 4-7 detik
+            floatingPhoto.style.animationDuration = duration + 's';
+            
+            document.body.appendChild(floatingPhoto);
+            
+            // Hapus setelah animasi selesai
+            setTimeout(() => {
+                floatingPhoto.remove();
+            }, duration * 1000);
         }
 
         function lihatTakjil() {
@@ -706,24 +604,6 @@
             }, 3000);
         }
 
-        function openFoodGallery() {
-            document.getElementById('foodModal').classList.add('show');
-            
-            // Tambah efek makanan terbang
-            const foods = ['🍗', '🍜', '🥘', '🍛', '🥤', '🍨', '🍢', '🥟'];
-            for (let i = 0; i < 15; i++) {
-                setTimeout(() => {
-                    createFloatingFood(foods[Math.floor(Math.random() * foods.length)]);
-                }, i * 150);
-            }
-            
-            showPrankMessage("📸 Nih, foto-foto makanan buat temen puasa kamu! 😋");
-        }
-
-        function closeFoodGallery() {
-            document.getElementById('foodModal').classList.remove('show');
-        }
-
         function showPrankMessage(msg) {
             const messageDiv = document.getElementById('prankMessage');
             messageDiv.style.display = 'block';
@@ -734,20 +614,28 @@
             }, 3000);
         }
 
-        // Klik di luar modal untuk tutup
-        window.onclick = function(event) {
-            const modal = document.getElementById('foodModal');
-            if (event.target == modal) {
-                closeFoodGallery();
-            }
-        }
-
-        // Tambah efek random
+        // Efek random: kadang ada bintang jatuh
         setInterval(() => {
-            if (Math.random() > 0.7) {
-                createFloatingFood('🌟');
+            if (Math.random() > 0.8) {
+                createFloatingPhoto('🌟');
             }
-        }, 5000);
+        }, 3000);
+
+        // Style tambahan untuk animasi slideDown
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes slideDown {
+                from {
+                    top: -100px;
+                    opacity: 0;
+                }
+                to {
+                    top: 20px;
+                    opacity: 1;
+                }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
