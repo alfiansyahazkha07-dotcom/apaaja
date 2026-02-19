@@ -23,22 +23,6 @@
             overflow-x: hidden;
         }
 
-        .bintang-berkedip {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 1px, transparent 1px),
-                        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            pointer-events: none;
-            animation: kedip 3s infinite;
-        }
-
-        @keyframes kedip {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
-        }
-
         .card {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -74,23 +58,9 @@
             transform: rotate(15deg);
         }
 
-        .hiasan-lentera {
-            position: absolute;
-            bottom: -30px;
-            left: -30px;
-            font-size: 80px;
-            animation: goyang 3s ease-in-out infinite;
-            filter: drop-shadow(0 10px 20px rgba(255, 215, 0, 0.3));
-        }
-
         @keyframes melayang {
             0%, 100% { transform: translateY(0) rotate(15deg); }
             50% { transform: translateY(-20px) rotate(20deg); }
-        }
-
-        @keyframes goyang {
-            0%, 100% { transform: rotate(-5deg); }
-            50% { transform: rotate(5deg); }
         }
 
         h1 {
@@ -99,15 +69,6 @@
             margin-bottom: 20px;
             text-align: center;
             font-weight: 700;
-            text-shadow: 3px 3px 0 rgba(201, 169, 89, 0.3);
-        }
-
-        .subtitle {
-            font-size: 1.2em;
-            color: #2C3E50;
-            text-align: center;
-            margin-bottom: 30px;
-            font-style: italic;
         }
 
         .profile-section {
@@ -122,11 +83,6 @@
             font-size: 1.2em;
             color: #1A3B5C;
             line-height: 1.8;
-        }
-
-        .profile-section strong {
-            color: #C17817;
-            font-size: 1.4em;
         }
 
         .timer-container {
@@ -175,30 +131,11 @@
             width: 100%;
             max-width: 400px;
             box-shadow: 0 10px 20px rgba(184, 134, 11, 0.3);
-            position: relative;
-            overflow: hidden;
         }
 
         .btn-ucapan:hover {
             transform: scale(1.05);
             box-shadow: 0 15px 30px rgba(184, 134, 11, 0.5);
-        }
-
-        .btn-ucapan::after {
-            content: "😜";
-            position: absolute;
-            right: -20px;
-            top: -10px;
-            font-size: 40px;
-            opacity: 0;
-            transition: all 0.3s;
-            transform: rotate(20deg);
-        }
-
-        .btn-ucapan:hover::after {
-            opacity: 1;
-            right: 20px;
-            top: -5px;
         }
 
         .message-box {
@@ -214,83 +151,33 @@
             text-align: center;
         }
 
-        .floating-food {
+        .floating-photo {
             position: fixed;
-            font-size: 60px;
             pointer-events: none;
             z-index: 9999;
-            animation: terbangMakanan 5s ease-out forwards;
-            filter: drop-shadow(0 10px 20px gold);
-            text-shadow: 0 0 15px rgba(255,215,0,0.5);
+            animation: terbangFoto 5s ease-out forwards;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+            max-width: 200px;
+            max-height: 200px;
+            object-fit: contain;
         }
 
-        @keyframes terbangMakanan {
+        @keyframes terbangFoto {
             0% {
                 transform: translateY(100vh) scale(0.5) rotate(0deg);
                 opacity: 1;
             }
             30% {
-                transform: translateY(70vh) scale(1.3) rotate(120deg);
+                transform: translateY(70vh) scale(1.2) rotate(10deg);
                 opacity: 0.95;
             }
             60% {
-                transform: translateY(40vh) scale(1.5) rotate(240deg);
+                transform: translateY(40vh) scale(1.4) rotate(-10deg);
                 opacity: 0.9;
             }
             100% {
-                transform: translateY(-20vh) scale(0.8) rotate(360deg);
+                transform: translateY(-20vh) scale(0.8) rotate(20deg);
                 opacity: 0;
-            }
-        }
-
-        .food-gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin: 30px 0;
-            padding: 20px;
-            background: rgba(255, 215, 0, 0.15);
-            border-radius: 40px;
-            border: 2px dashed #C9A959;
-        }
-
-        .gallery-item {
-            text-align: center;
-            font-size: 50px;
-            padding: 20px;
-            background: white;
-            border-radius: 30px;
-            border: 3px solid #C9A959;
-            animation: munculItem 0.5s ease-out forwards;
-            opacity: 0;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.1) rotate(5deg);
-            background: #FFF0D4;
-            border-color: #B8860B;
-        }
-
-        .gallery-item:nth-child(1) { animation-delay: 0.1s; }
-        .gallery-item:nth-child(2) { animation-delay: 0.15s; }
-        .gallery-item:nth-child(3) { animation-delay: 0.2s; }
-        .gallery-item:nth-child(4) { animation-delay: 0.25s; }
-        .gallery-item:nth-child(5) { animation-delay: 0.3s; }
-        .gallery-item:nth-child(6) { animation-delay: 0.35s; }
-        .gallery-item:nth-child(7) { animation-delay: 0.4s; }
-        .gallery-item:nth-child(8) { animation-delay: 0.45s; }
-        .gallery-item:nth-child(9) { animation-delay: 0.5s; }
-
-        @keyframes munculItem {
-            from {
-                opacity: 0;
-                transform: scale(0.5) translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
             }
         }
 
@@ -299,33 +186,6 @@
             color: #666;
             margin-top: 40px;
             font-size: 14px;
-        }
-
-        .prank-notice {
-            background: #FFEAA7;
-            color: #B8860B;
-            padding: 15px;
-            border-radius: 30px;
-            margin: 20px 0;
-            font-size: 1.1em;
-            border: 2px dashed #C9A959;
-            text-align: center;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); background: #FFD966; }
-        }
-
-        .counter-badge {
-            background: #C17817;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 30px;
-            font-size: 1em;
-            display: inline-block;
-            margin-top: 15px;
         }
 
         @media (max-width: 768px) {
@@ -346,97 +206,63 @@
                 padding: 15px 30px;
             }
             
-            .gallery-item {
-                font-size: 40px;
-                padding: 15px;
-            }
-            
-            .floating-food {
-                font-size: 40px;
+            .floating-photo {
+                max-width: 120px;
+                max-height: 120px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="bintang-berkedip"></div>
-    
     <div class="hiasan-bulan">🌙</div>
-    <div class="hiasan-lentera">🏮</div>
     
     <div class="card">
         <h1>✨ SELAMAT BERPUASA! ✨</h1>
-        <div class="subtitle">Marhaban Ya Ramadhan 🌙</div>
         
         <div class="profile-section">
-            <p>Untuk: <strong>🍽️ [Teman yang Lapar]</strong></p>
+            <p>Untuk: <strong>🍽️ [Nama Teman]</strong></p>
             <p>Semoga puasamu lancar sampai maghrib!</p>
-            <p>🤲 <em>"Jangan lupa sahur, biar kuat puasanya"</em></p>
         </div>
 
         <!-- Countdown -->
         <div class="timer-container">
-            <div class="timer-label">⏰ Menuju Waktu Berbuka</div>
+            <div class="timer-label">⏰ Menuju Maghrib</div>
             <div id="countdown">05:00:00</div>
         </div>
 
-        <!-- Prank Notice -->
-        <div class="prank-notice">
-            ⚡ PERHATIAN! Tombol di bawah ini adalah PRANK! ⚡
-        </div>
-
-        <!-- Single Prank Button -->
+        <!-- Single Button -->
         <div class="button-container">
             <button class="btn-ucapan" onclick="kasihUcapanBalik()">
                 <span>💬</span> Kasih Ucapan Balik
-                <span>😜</span>
             </button>
         </div>
 
         <!-- Message Area -->
         <div id="prankMessage" class="message-box"></div>
 
-        <!-- Gallery Tersembunyi (akan muncul pas di klik) -->
-        <div id="foodGallery" class="food-gallery" style="display: none;">
-            <div class="gallery-item">🍗</div>
-            <div class="gallery-item">🍜</div>
-            <div class="gallery-item">🍕</div>
-            <div class="gallery-item">🍣</div>
-            <div class="gallery-item">🥘</div>
-            <div class="gallery-item">🍨</div>
-            <div class="gallery-item">🍛</div>
-            <div class="gallery-item">🥟</div>
-            <div class="gallery-item">🍢</div>
-        </div>
-
-        <!-- Counter akan muncul setelah klik -->
-        <div id="foodCounter" class="counter-badge" style="display: none; text-align: center;">
-            🍽️ Total Makanan: <span id="totalFood">0</span>
-        </div>
-
         <div class="footer-note">
-            *Website ini pure buat prank temen yang lagi puasa! 😜
+            *Website ini dibuat untuk hiburan 😊
         </div>
     </div>
 
     <script>
-        // Daftar LENGKAP makanan yang sudah ditentukan di codingan (40+ jenis!)
-        const foodList = [
-            // Makanan Berat
-            '🍗', '🍖', '🥩', '🍔', '🍟', '🌭', '🍕', '🥪', '🌮', '🌯',
-            // Makanan Asia
-            '🍜', '🍲', '🍛', '🍣', '🍱', '🥟', '🍚', '🍙', '🍘', '🥠',
-            // Makanan Ringan
-            '🍿', '🧇', '🥞', '🥨', '🥯', '🥖', '🥐', '🍞', '🥚', '🍳',
-            // Dessert
-            '🍨', '🍦', '🥧', '🍰', '🎂', '🧁', '🍮', '🍭', '🍬', '🍫',
-            // Minuman
-            '🧋', '🥤', '🧃', '🧊', '☕', '🍵', '🥛',
-            // Tambahan spesial
-            '🍢', '🍡', '🥮', '🍠'
+        // ===== TEMPAT MASUKIN FOTO FOTO DI SINI =====
+        // GANTI URL DI BAWAH INI DENGAN FOTO FOTO YANG MAU DIPAKAI
+        const photoList = [
+            // ISI DENGAN URL FOTO ASLI
+            "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400", // Pancakes
+            "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400", // Pizza
+            "https://images.unsplash.com/photo-1550547660-d9450f859349?w=400", // Burger
+            "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400", // Steak
+            "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400", // Salad
+            "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400", // Ice Cream
+            "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400", // Pizza
+            "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400", // Various food
+            "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400", // Ramen
+            "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400" // Various food
         ];
 
-        let foodCounter = 0;
-
+        // Countdown timer
         function updateCountdown() {
             const now = new Date();
             const maghrib = new Date();
@@ -458,121 +284,59 @@
 
         setInterval(updateCountdown, 1000);
 
-        // FUNGSI PRANK UTAMA: Kasih Ucapan Balik
+        // FUNGSI PRANK: Kasih Ucapan Balik
         function kasihUcapanBalik() {
-            // Reset counter
-            foodCounter = 0;
-            
-            // Tampilkan gallery makanan dengan efek smooth
-            const gallery = document.getElementById('foodGallery');
-            gallery.style.display = 'grid';
-            gallery.style.animation = 'muncul 0.5s ease-out';
-            
-            // Tampilkan counter
-            const counter = document.getElementById('foodCounter');
-            counter.style.display = 'block';
-            
-            // Scroll ke gallery dengan smooth
-            gallery.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            
-            // Tampilkan pesan prank pertama
-            showPrankMessage("😜 PRANK! Yang bisa dikirim cuma FOTO MAKANAN! 😋");
-            
-            // Getar HP (kalau support)
+            // Getar HP
             if (navigator.vibrate) {
-                navigator.vibrate([300, 100, 300]); // Getar 2x
+                navigator.vibrate(200);
             }
             
-            // Kirim 30-40 foto makanan melayang (lebih banyak!)
-            const jumlahFoto = Math.floor(Math.random() * 21) + 30; // 30-50 foto
+            // Kirim 20-30 foto melayang
+            const jumlahFoto = Math.floor(Math.random() * 11) + 20; // 20-30 foto
             
             for (let i = 0; i < jumlahFoto; i++) {
                 setTimeout(() => {
-                    // Pilih random makanan dari foodList
-                    const randomFood = foodList[Math.floor(Math.random() * foodList.length)];
-                    createFloatingFood(randomFood);
+                    // Pilih random foto dari photoList
+                    const randomPhoto = photoList[Math.floor(Math.random() * photoList.length)];
+                    createFloatingPhoto(randomPhoto);
                     
-                    // Update counter
-                    foodCounter++;
-                    document.getElementById('totalFood').innerHTML = foodCounter;
-                    
-                    // Setiap 8 foto, muncul pesan random
-                    if (i % 8 === 0 && i > 0) {
-                        const messages = [
-                            `📸 Udah ${i} foto makanan nih!`,
-                            "😋 Laper kan liatnya?",
-                            "🌙 Sabar ya masih X jam lagi!",
-                            "🍽️ Pengen makan? Liat aja fotonya!",
-                            "😂 PRANK TERUSSS!",
-                            "💪 Kuat ga tahan laparnya?"
-                        ];
-                        showPrankMessage(messages[Math.floor(Math.random() * messages.length)]);
+                    // Getar setiap 5 foto
+                    if (i % 5 === 0 && navigator.vibrate) {
+                        navigator.vibrate(50);
                     }
                     
-                    // Efek getar setiap 10 foto
-                    if (i % 10 === 0 && navigator.vibrate) {
-                        navigator.vibrate(100);
-                    }
-                    
-                }, i * 150); // Kirim setiap 150ms (lebih cepat)
+                }, i * 200);
             }
             
-            // Pesan setelah semua terkirim
+            // Pesan setelah selesai
             setTimeout(() => {
-                showPrankMessage("🎉 SELAMAT! Kamu dikirimin " + jumlahFoto + " FOTO MAKANAN! Selamat menahan lapar! 🎉");
-                
-                // Update counter final
-                document.getElementById('totalFood').innerHTML = jumlahFoto;
-                
-                // Bonus: munculin piring dan alat makan
-                setTimeout(() => {
-                    for (let i = 0; i < 8; i++) {
-                        setTimeout(() => {
-                            const bonusItems = ['🍽️', '🥢', '🥄', '🍴', '🥂'];
-                            createFloatingFood(bonusItems[Math.floor(Math.random() * bonusItems.length)]);
-                        }, i * 200);
-                    }
-                    showPrankMessage("🍽️ NIH PIRING SAMA SENDOKNYA! SILAHKAN MAKAN FOTO-FOTO TADI! 😂");
-                }, 1500);
-                
-            }, jumlahFoto * 150 + 1000);
-            
-            // Bonus gelombang kedua setelah 5 detik
-            setTimeout(() => {
-                for (let i = 0; i < 10; i++) {
-                    setTimeout(() => {
-                        createFloatingFood('💀');
-                    }, i * 100);
-                }
-                showPrankMessage("💀 BATAL PUASA? Eits bercanda! Semangat!!");
-            }, 5000);
+                showPrankMessage("✅ Ucapan balik sudah dikirim! " + jumlahFoto + " foto!");
+            }, jumlahFoto * 200 + 500);
         }
 
-        // Fungsi bikin foto makanan melayang
-        function createFloatingFood(food) {
-            const floatingFood = document.createElement('div');
-            floatingFood.className = 'floating-food';
-            floatingFood.innerHTML = food;
+        // Fungsi bikin foto melayang
+        function createFloatingPhoto(photoUrl) {
+            const img = document.createElement('img');
+            img.className = 'floating-photo';
+            img.src = photoUrl;
             
-            // Posisi random horizontal
-            floatingFood.style.left = Math.random() * 90 + '%';
+            // Posisi random
+            img.style.left = Math.random() * 80 + '%';
             
-            // Ukuran random (variasi lebih besar)
-            const size = Math.floor(Math.random() * 50) + 50; // 50-100px
-            floatingFood.style.fontSize = size + 'px';
+            // Ukuran random
+            const size = Math.floor(Math.random() * 100) + 100; // 100-200px
+            img.style.width = size + 'px';
+            img.style.height = size + 'px';
             
             // Kecepatan random
             const duration = Math.floor(Math.random() * 4) + 4; // 4-8 detik
-            floatingFood.style.animationDuration = duration + 's';
+            img.style.animationDuration = duration + 's';
             
-            // Delay random
-            floatingFood.style.animationDelay = Math.random() * 0.8 + 's';
-            
-            document.body.appendChild(floatingFood);
+            document.body.appendChild(img);
             
             // Hapus setelah animasi selesai
             setTimeout(() => {
-                floatingFood.remove();
+                img.remove();
             }, duration * 1000);
         }
 
@@ -581,27 +345,10 @@
             messageDiv.style.display = 'block';
             messageDiv.innerHTML = msg;
             
-            // Auto hide setelah 3 detik
             setTimeout(() => {
                 messageDiv.style.display = 'none';
-            }, 3000);
+            }, 2000);
         }
-
-        // Style untuk animasi tambahan
-        const style = document.createElement('style');
-        style.innerHTML = `
-            @keyframes slideDown {
-                from {
-                    top: -100px;
-                    opacity: 0;
-                }
-                to {
-                    top: 20px;
-                    opacity: 1;
-                }
-            }
-        `;
-        document.head.appendChild(style);
     </script>
 </body>
 </html>
